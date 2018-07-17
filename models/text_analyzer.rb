@@ -8,20 +8,21 @@ class TextAnalyzer
   end
 
   def count_of_words
-    @string.split(' ').length
+    string.split(' ').length
   end
 
   def count_of_vowels
-    @string.scan(/[aeiou]/).count
+    string.scan(/[aeiou]/).count
   end
 
   def count_of_consonants
-    @string.scan(/[bcdfghjklmnpqrstvwxyz]/).count
+    string.scan(/[bcdfghjklmnpqrstvwxyz]/).count
   end
 
   def most_used_letter
     letter_count = Hash.new 0
-    @string.split('').each { |c| letter_count[c] += 1 }
+    clean = string.gsub(/[^a-z]/, '')
+    clean.split('').each { |c| letter_count[c] += 1 }
     letter_count.max_by {|k,v| v }
   end
 
